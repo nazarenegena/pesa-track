@@ -1,0 +1,1 @@
+import{a as t,f as e}from"../chunks/zVxnddS-.js";import"../chunks/ClA_ODsN.js";import{A as n,B as i}from"../chunks/CAseZmFr.js";var p=e("<p>The Over View Content</p>");function v(r){var o=p();t(r,o)}var m=e("<div><!></div>");function c(r){var o=m(),a=n(o);v(a),i(o),t(r,o)}export{c as component};
