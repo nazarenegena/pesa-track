@@ -26,7 +26,7 @@
        <p class="text-2xl font-bold font-mono"><span>KSh </span> {amount}</p>
    </div>
    {#if showProgress}
-     <div class="flex h-2 w-full overflow-hidden rounded-full">
+     <div class="flex h-1 w-full overflow-hidden rounded-full">
        <div
          class="h-20 bg-mint transition-all"
          style="width: {progress}%"
@@ -37,9 +37,18 @@
        ></div>
      </div>
    {/if}
-   <div class="flex text-mint text-sm items-center gap-1">
-       <TextIcon size={18}/>
-      <p class=""> {percentage} {description} </p>
+   <div class="flex  text-sm items-center gap-1">
+
+       {#if title == "Monthly Budget" || title ==  "Balance"}
+        <p class="text-slate-blue"> {percentage} {description} </p>
+        {:else}
+        <div class="flex text-mint gap-x-2">
+            <TextIcon size={18}/>
+            <p class="text-sm"> {percentage} {description} </p>
+        </div>
+
+       {/if}
+
    </div>
 
 </div>
