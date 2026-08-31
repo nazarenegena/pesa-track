@@ -4,7 +4,8 @@
     import YearlyData from "./YearlyData.svelte";
 
 
-let currentView = $state("Week")
+let currentView = $state("week")
+const viewItems = ["week", "month", "year"]
 const handleViewToggle = (view:string)=> {
   currentView = view;
 }
@@ -14,14 +15,17 @@ const activeBtnStyle = "bg-slate-blue/20 px-3 py-0 rounded-lg"
 <div class="space-y-10 bg-navy-700/40 border border-mint-faint px-5 py-7 rounded-2xl">
     <div class="flex justify-between">
         <div class="space-y-2">
-            <p>Spending Overview </p>
-            <p>Your spending activity across {`${currentView}`}</p>
+            <p class="font-semibold">Spending Overview </p>
+            <p class="text-slate-blue">{#if currentView === "week"}Your spending activity across this week {:else} Your spending activity across {`${currentView}`} {/if}</p>
         </div>
-        <div class="flex gap-x-6 bg-navy-850 px-3 text-sm rounded-xl h-10 py-1.5">
-            <button onclick={()=> handleViewToggle("week")} class="cursor-pointer {currentView === "week"  ? `${activeBtnStyle}` : ""}">Week</button>
-            <button onclick={()=> handleViewToggle("month")} class="cursor-pointer { currentView === "month"  ? `${activeBtnStyle}` : ""}">Month</button>
-            <button onclick={()=> handleViewToggle("year")} class="cursor-pointer {currentView === "year" ? `${activeBtnStyle}` : ""}">Year</button>
-        </div>
+
+         <div class="flex gap-x-6 bg-navy-850 px-3 text-sm rounded-xl h-10 py-1.5">
+{#each viewItems as view }
+    <button onclick={()=> handleViewToggle(view)} class="cursor-pointer {currentView === view  ? `${activeBtnStyle}` : ""}">
+        {view}
+    </button>
+    {/each}
+         </div>
     </div>
     {#if currentView === "month"}
         <MonthlyData/>

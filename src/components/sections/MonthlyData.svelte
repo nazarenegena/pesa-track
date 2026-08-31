@@ -1,7 +1,9 @@
 <script lang="ts">
+    import SpendingCard from "./SpendingCard.svelte";
+ import { MoveDownIcon } from "@lucide/svelte";
 
 </script>
 
 <div>
-    <p>Monthly Data View</p>
+    <SpendingCard amount = {42850} TextIcon={MoveDownIcon} description="12% lower than July"/>
 </div>

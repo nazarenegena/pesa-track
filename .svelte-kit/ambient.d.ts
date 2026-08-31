@@ -72,7 +72,6 @@ declare module '$env/static/private' {
 	export const npm_config_frozen_lockfile: string;
 	export const npm_config_verify_deps_before_run: string;
 	export const PATH: string;
-	export const LaunchInstanceID: string;
 	export const npm_package_json: string;
 	export const __CFBundleIdentifier: string;
 	export const COREPACK_ENABLE_DOWNLOAD_PROMPT: string;
@@ -100,7 +99,6 @@ declare module '$env/static/private' {
 	export const npm_config_user_agent: string;
 	export const WARP_CLIENT_VERSION: string;
 	export const CONDA_CHANGEPS1: string;
-	export const SECURITYSESSIONID: string;
 	export const COLORTERM: string;
 	export const npm_node_execpath: string;
 	export const NODE_ENV: string;
@@ -224,7 +222,6 @@ declare module '$env/dynamic/private' {
 		npm_config_frozen_lockfile: string;
 		npm_config_verify_deps_before_run: string;
 		PATH: string;
-		LaunchInstanceID: string;
 		npm_package_json: string;
 		__CFBundleIdentifier: string;
 		COREPACK_ENABLE_DOWNLOAD_PROMPT: string;
@@ -252,7 +249,6 @@ declare module '$env/dynamic/private' {
 		npm_config_user_agent: string;
 		WARP_CLIENT_VERSION: string;
 		CONDA_CHANGEPS1: string;
-		SECURITYSESSIONID: string;
 		COLORTERM: string;
 		npm_node_execpath: string;
 		NODE_ENV: string;
