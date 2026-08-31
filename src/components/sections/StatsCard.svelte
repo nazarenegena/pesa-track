@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Component } from "svelte";
 
-  interface CardProps {
+  interface StatsCardProps {
     title: string;
     amount: number;
     percentage?: number | null;
@@ -11,7 +11,8 @@
     showProgress?: boolean
     progress?: number
   }
-  let {title, amount, percentage, description, TitleIcon, TextIcon, showProgress = false, progress = 0} : CardProps = $props();
+  let {title, amount, percentage, description, TitleIcon, TextIcon, showProgress = false, progress = 0} : StatsCardProps = $props();
+  let  formattedAmount = $derived(amount.toLocaleString('en-US'));
 </script>
 
 <div class="bg-navy-700/40 border border-mint-faint px-5 py-7 rounded-2xl space-y-4 w-68">
@@ -23,7 +24,11 @@
     </div>
 
    <div>
-       <p class="text-2xl font-bold font-mono"><span>KSh </span> {amount}</p>
+       <p class="text-2xl font-bold inline-flex items-baseline gap-1.5">
+           <span class="text-xl">KSh</span>
+           <span class="font-mono ">
+           {formattedAmount}
+       </span></p>
    </div>
    {#if showProgress}
      <div class="flex h-1 w-full overflow-hidden rounded-full">

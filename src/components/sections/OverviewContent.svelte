@@ -3,6 +3,7 @@
     import StatsCard from "./StatsCard.svelte";
    	import { ChartLine, Wallet, Bookmark, SaveCheck, MoveUpRight  } from '@lucide/svelte';
     import SpendingOverview from "./SpendingOverview.svelte";
+    import SpendingCategory from "./SpendingCategory.svelte";
 
   let today = new Date();
   const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' } as const;
@@ -35,7 +36,8 @@
         </div>
 
         <!-- Analysis Section -->
-        <div>
+        <div class="grid grid-cols-2 gap-x-8">
             <SpendingOverview/>
+             <SpendingCategory/>
         </div>
 </div>
