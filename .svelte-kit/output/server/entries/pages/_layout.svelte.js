@@ -1,96 +1,6 @@
-import { g as getContext, a as attributes, c as clsx, b as ensure_array_like, d as element, f as derived, h as spread_props, i as attr, j as attr_class, k as stringify, e as escape_html } from "../../chunks/root.js";
-import { p as page } from "../../chunks/index.js";
-/**
- * @file
- * @license @lucide/svelte v1.33.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const defaultAttributes = {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: 24,
-  height: 24,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  "stroke-width": 2,
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round"
-};
-/**
- * @file
- * @license @lucide/svelte v1.33.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const hasA11yProp = (props) => {
-  for (const prop in props) {
-    if (prop.startsWith("aria-") || prop === "role" || prop === "title") {
-      return true;
-    }
-  }
-  return false;
-};
-/**
- * @file
- * @license @lucide/svelte v1.33.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const LucideContext = Symbol("lucide-context");
-const getLucideContext = () => getContext(LucideContext);
-function Icon($$renderer, $$props) {
-  $$renderer.component(($$renderer2) => {
-    const globalProps = getLucideContext() ?? {};
-    const {
-      name,
-      color = globalProps.color ?? "currentColor",
-      size = globalProps.size ?? 24,
-      strokeWidth = globalProps.strokeWidth ?? 2,
-      absoluteStrokeWidth = globalProps.absoluteStrokeWidth ?? false,
-      iconNode = [],
-      children,
-      $$slots,
-      $$events,
-      ...props
-    } = $$props;
-    const calculatedStrokeWidth = derived(() => absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth);
-    $$renderer2.push(`<svg${attributes(
-      {
-        ...defaultAttributes,
-        ...!children && !hasA11yProp(props) && { "aria-hidden": "true" },
-        ...props,
-        width: size,
-        height: size,
-        stroke: color,
-        "stroke-width": calculatedStrokeWidth(),
-        class: clsx([
-          "lucide-icon lucide",
-          globalProps.class,
-          name && `lucide-${name}`,
-          props.class
-        ])
-      },
-      void 0,
-      void 0,
-      void 0,
-      3
-    )}><!--[-->`);
-    const each_array = ensure_array_like(iconNode);
-    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let [tag, attrs] = each_array[$$index];
-      element($$renderer2, tag, () => {
-        $$renderer2.push(`${attributes({ ...attrs }, void 0, void 0, void 0, 3)}`);
-      });
-    }
-    $$renderer2.push(`<!--]-->`);
-    children?.($$renderer2);
-    $$renderer2.push(`<!----></svg>`);
-  });
-}
+import { s as spread_props, a as ensure_array_like, b as attr, c as attr_class, d as stringify, e as escape_html } from "../../chunks/index.js";
+import { p as page } from "../../chunks/index2.js";
+import { I as Icon, W as Wallet } from "../../chunks/wallet.js";
 function Bell($$renderer, $$props) {
   let { $$slots, $$events, ...props } = $$props;
   const iconNode = [
@@ -179,19 +89,6 @@ function User($$renderer, $$props) {
   ];
   Icon($$renderer, spread_props([{ name: "user" }, props, { iconNode }]));
 }
-function Wallet($$renderer, $$props) {
-  let { $$slots, $$events, ...props } = $$props;
-  const iconNode = [
-    [
-      "path",
-      {
-        "d": "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
-      }
-    ],
-    ["path", { "d": "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" }]
-  ];
-  Icon($$renderer, spread_props([{ name: "wallet" }, props, { iconNode }]));
-}
 function Sidebar($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     const links = [
@@ -206,7 +103,7 @@ function Sidebar($$renderer, $$props) {
     function linkClass(href) {
       return isActive(href) ? "bg-mint-faint text-mint border-l-2" : "text-slate-blue hover:bg-navy-800 hover:text-ice";
     }
-    $$renderer2.push(`<aside class="sticky top-0 h-screen w-60 shrink-0 border-r border-mint-faint bg-navy-900 p-4"><div class="mb-16 mt-6 px-2"><span class="text-2xl font-semibold tracking-tight text-ice">Pesa<span class="text-mint">Track</span></span></div> <nav class="flex flex-col gap-8"><!--[-->`);
+    $$renderer2.push(`<aside class="sticky top-0 h-screen w-60 shrink-0 border-r border-mint-faint bg-navy-850 p-4"><div class="mb-16 mt-6 px-2"><span class="text-2xl font-semibold tracking-tight text-ice">Pesa<span class="text-mint">Track</span></span></div> <nav class="flex flex-col gap-8"><!--[-->`);
     const each_array = ensure_array_like(links);
     for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
       let link = each_array[$$index];
@@ -223,7 +120,7 @@ function Sidebar($$renderer, $$props) {
   });
 }
 function Topbar($$renderer) {
-  $$renderer.push(`<header class="sticky top-0 z-10 flex items-center justify-between border-b border-navy-800 bg-navy-900 px-8 py-4"><div class="relative flex-1 max-w-md">`);
+  $$renderer.push(`<header class="sticky top-0 z-10 flex items-center justify-between border-b border-mint-faint bg-navy-900 px-8 py-4"><div class="relative flex-1 max-w-md">`);
   Search($$renderer, {
     size: 18,
     class: "absolute left-3 top-1/2 -translate-y-1/2 text-slate-blue"
@@ -234,7 +131,7 @@ function Topbar($$renderer) {
 }
 function _layout($$renderer, $$props) {
   let { children } = $$props;
-  $$renderer.push(`<div id="app" class="min-h-screen bg-navy-850 text-ice"><div class="flex">`);
+  $$renderer.push(`<div id="app" class="min-h-screen bg-navy-900 text-ice"><div class="flex">`);
   Sidebar($$renderer);
   $$renderer.push(`<!----> <div class="flex flex-1 flex-col">`);
   Topbar($$renderer);

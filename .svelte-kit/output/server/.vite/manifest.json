@@ -18,8 +18,16 @@
     "file": "chunks/index.js",
     "name": "index",
     "imports": [
-      "_root.js",
+      "_uneval.js"
+    ]
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "name": "index",
+    "imports": [
+      "_index.js",
       "_exports.js",
+      "_root.js",
       "_utils2.js"
     ]
   },
@@ -35,7 +43,7 @@
     "file": "chunks/root.js",
     "name": "root",
     "imports": [
-      "_uneval.js"
+      "_index.js"
     ]
   },
   "_server.js": {
@@ -58,6 +66,13 @@
     "file": "chunks/utils2.js",
     "name": "utils"
   },
+  "_wallet.js": {
+    "file": "chunks/wallet.js",
+    "name": "wallet",
+    "imports": [
+      "_index.js"
+    ]
+  },
   "node_modules/.pnpm/@sveltejs+kit@2.70.3_@sveltejs+vite-plugin-svelte@5.1.1_svelte@5.56.9_vite@6.4.3_jiti@2_00abdf5b44497b606683865f6143b3f0/node_modules/@sveltejs/kit/src/runtime/app/server/remote/index.js": {
     "file": "remote-entry.js",
     "name": "remote-entry",
@@ -74,8 +89,8 @@
     "src": "node_modules/.pnpm/@sveltejs+kit@2.70.3_@sveltejs+vite-plugin-svelte@5.1.1_svelte@5.56.9_vite@6.4.3_jiti@2_00abdf5b44497b606683865f6143b3f0/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
     "isEntry": true,
     "imports": [
-      "_root.js",
-      "_index.js"
+      "_index.js",
+      "_index2.js"
     ]
   },
   "node_modules/.pnpm/@sveltejs+kit@2.70.3_@sveltejs+vite-plugin-svelte@5.1.1_svelte@5.56.9_vite@6.4.3_jiti@2_00abdf5b44497b606683865f6143b3f0/node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -90,6 +105,7 @@
       "_uneval.js",
       "_exports.js",
       "_utils2.js",
+      "_index.js",
       "_internal.js"
     ]
   },
@@ -99,18 +115,23 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_root.js",
-      "_index.js"
+      "_index.js",
+      "_index2.js",
+      "_wallet.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.C0RE-CAC.css"
+      "_app/immutable/assets/_layout.CbhGpnwh.css"
     ]
   },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
     "name": "entries/pages/_page.svelte",
     "src": "src/routes/+page.svelte",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_wallet.js"
+    ]
   },
   "src/routes/analytics/+page.svelte": {
     "file": "entries/pages/analytics/_page.svelte.js",
