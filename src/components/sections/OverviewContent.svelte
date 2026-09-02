@@ -1,18 +1,48 @@
 <script lang="ts">
-    import { Plus } from "@lucide/svelte";
     import StatsCard from "./StatsCard.svelte";
-   	import { ChartLine, Wallet, Bookmark, SaveCheck, MoveUpRight  } from '@lucide/svelte';
+   	import { ChartLine, Wallet, Bookmark, SaveCheck, MoveUpRight, Plus  } from '@lucide/svelte';
     import SpendingOverview from "./SpendingOverview.svelte";
     import SpendingCategory from "./SpendingCategory.svelte";
+    import ExpenseModal from "./ExpenseModal.svelte";
+    import RecentExpenses from "./RecentExpenses.svelte";
+    import type ExpenseObj  from "../../utils/interfaces";
 
   let today = new Date();
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' } as const;
+  let isOpen = $state(false);
+  let expenses = $state<ExpenseObj[]>([]);
 
-  // Format the date and convert it to uppercase
+$effect(() =>{
+  const savedExpenses = localStorage.getItem("my_expenses");
+  if(savedExpenses){
+    expenses = JSON.parse(savedExpenses);
+  }
+})
+
+$effect(() =>{
+  localStorage.setItem("my_expenses", JSON.stringify(expenses))
+})
+
+function addExpenseToState(title:string, category:string, paymentMethod:string, description: string, amount:number, date:string) {
+  const newExpense: ExpenseObj ={
+    id: crypto.randomUUID(),
+    title,
+    category,
+    paymentMethod,
+    amount,
+    description,
+    date
+  }
+  expenses.push(newExpense);
+}
+
+  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' } as const;
   let formattedDate = today.toLocaleDateString('en-US', dateOptions ).toUpperCase();
+  const handleModalOpen = () =>{
+    isOpen = true
+  }
 </script>
 <!-- Header Section -->
-<div class="space-y-10">
+<div class="space-y-6">
         <div  class="">
             <p class="text-md text-slate-blue font-bold">{formattedDate}</p>
         </div>
@@ -24,11 +54,14 @@
 
             <div class="flex bg-mint text-navy-900 items-center px-4 rounded-md gap-1 h-12 ">
                 <Plus size={18}/>
-                <p class="font-semibold text-sm">Add Expense</p>
+                <button class="font-semibold text-sm cursor-pointer" onclick={handleModalOpen}> Add Expense </button>
             </div>
         </div>
+        <div>
+            <ExpenseModal bind:isOpen={isOpen} onAddExpense={addExpenseToState}/>
+        </div>
         <!-- Stats Card Section -->
-        <div class="flex justify-evenly">
+        <div class="flex justify-evenly w-full gap-x-6">
             <StatsCard title = "Total Spent" TitleIcon = {Bookmark} amount ={42850} TextIcon={MoveUpRight} percentage={12} description={"% less than last month"}/>
            <StatsCard title = "Monthly Budget" TitleIcon = {Wallet} amount ={60000} description = {" 71% of your budget used"} showProgress progress={60}/>
            <StatsCard title = "Balance" TitleIcon = {ChartLine} amount ={17150} description={"28 days remaining"} />
@@ -40,4 +73,5 @@
             <SpendingOverview/>
              <SpendingCategory/>
         </div>
+        <RecentExpenses {expenses} />
 </div>

@@ -9,7 +9,7 @@ const viewItems = ["week", "month", "year"]
 const handleViewToggle = (view:string)=> {
   currentView = view;
 }
-const activeBtnStyle = "bg-slate-blue/20 px-3 py-0 rounded-lg"
+const activeBtnStyle = "bg-mint/15 text-mint px-3 py-0 rounded-lg"
 </script>
 
 <div class="space-y-10 bg-navy-700/40 border border-mint-faint px-5 py-7 rounded-2xl">
@@ -21,7 +21,7 @@ const activeBtnStyle = "bg-slate-blue/20 px-3 py-0 rounded-lg"
 
          <div class="flex gap-x-6 bg-navy-850 px-3 text-sm rounded-xl h-10 py-1.5">
 {#each viewItems as view }
-    <button onclick={()=> handleViewToggle(view)} class="cursor-pointer {currentView === view  ? `${activeBtnStyle}` : ""}">
+    <button onclick={()=> handleViewToggle(view)} class="cursor-pointer text-slate-blue transition-colors {currentView === view ? activeBtnStyle : 'hover:text-ice'}">
         {view}
     </button>
     {/each}
