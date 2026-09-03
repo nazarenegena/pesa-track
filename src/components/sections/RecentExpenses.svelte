@@ -58,7 +58,7 @@
                     </div>
                     <div class="flex flex-col">
                         <span class="text-sm font-medium text-ice">{expense.title}</span>
-                        <span class="text-xs text-slate-blue">{expense.category} · {expense.paymentMethod}</span>
+                        <span class="text-xs text-slate-blue">{expense.category} · {expense.payment}</span>
                     </div>
                 </div>
                 <div class="flex flex-col items-end">
