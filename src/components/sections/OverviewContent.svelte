@@ -22,12 +22,12 @@ $effect(() =>{
   localStorage.setItem("my_expenses", JSON.stringify(expenses))
 })
 
-function addExpenseToState(title:string, category:string, paymentMethod:string, description: string, amount:number, date:string) {
+function addExpenseToState(title:string, category:string, payment:string, description: string, amount:number, date:string) {
   const newExpense: ExpenseObj ={
     id: crypto.randomUUID(),
     title,
     category,
-    paymentMethod,
+    payment,
     amount,
     description,
     date
@@ -73,5 +73,6 @@ function addExpenseToState(title:string, category:string, paymentMethod:string, 
             <SpendingOverview/>
              <SpendingCategory/>
         </div>
+
         <RecentExpenses {expenses} />
 </div>
