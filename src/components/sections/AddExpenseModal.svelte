@@ -1,7 +1,7 @@
 <script lang="ts">
     import { X, Wallet, Plus } from "@lucide/svelte";
 
-    interface ModalProps {
+    interface AddModalProps {
         isOpen?: boolean;
         onAddExpense: (
             title: string,
@@ -13,7 +13,7 @@
         ) => void;
     }
 
-    let { isOpen = $bindable(false), onAddExpense }: ModalProps = $props();
+    let { isOpen = $bindable(false), onAddExpense }: AddModalProps = $props();
 
     let title = $state("");
     let category = $state("bills");

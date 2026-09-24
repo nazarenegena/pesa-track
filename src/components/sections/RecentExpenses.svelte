@@ -27,7 +27,7 @@
     {:else}
         {#each expenses as expense, i (expense.id)}
             {@const style = getCategoryStyle(expense.category)}
-            <ExpenseCard expenses={expenses} expense={expense} style={style} i={i} />
+            <ExpenseCard {expenses} {expense} {style} {i} />
         {/each}
     {/if}
 </div>

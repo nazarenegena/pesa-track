@@ -3,7 +3,7 @@
    	import { ChartLine, Wallet, Bookmark, SaveCheck, MoveUpRight, Plus  } from '@lucide/svelte';
     import SpendingOverview from "./SpendingOverview.svelte";
     import SpendingCategory from "./SpendingCategory.svelte";
-    import ExpenseModal from "./ExpenseModal.svelte";
+    import AddExpenseModal from "./AddExpenseModal.svelte";
     import RecentExpenses from "./RecentExpenses.svelte";
     import type ExpenseObj  from "../../utils/interfaces";
 
@@ -58,7 +58,7 @@ function addExpenseToState(title:string, category:string, payment:string, descri
             </div>
         </div>
         <div>
-            <ExpenseModal bind:isOpen={isOpen} onAddExpense={addExpenseToState}/>
+            <AddExpenseModal bind:isOpen={isOpen} onAddExpense={addExpenseToState}/>
         </div>
         <!-- Stats Card Section -->
         <div class="flex justify-evenly w-full gap-x-6">
