@@ -1,12 +1,10 @@
-import type { Component } from "svelte";
-
 export default interface ExpenseObj{
-  id: string;
+  id?: string;
   title: string;
   category: string;
   payment: string;
   amount: number;
-  description: string;
+  description?: string;
   date: string;
 }
 

@@ -1,6 +1,8 @@
 <script lang="ts">
     import type ExpenseObj from "../../utils/interfaces";
+    import { Ellipsis } from '@lucide/svelte';
     import type { StyleObj } from "../../utils/interfaces";
+    import ViewExpenseModal from "./ViewExpenseModal.svelte";
 
     interface ExpenseCardProps {
       expenses: ExpenseObj[],
@@ -10,6 +12,7 @@
     }
 
     let { expenses, expense, style, i }: ExpenseCardProps  = $props();
+    let isOpen = $state(false)
 
     function formatAmount(amount: number) {
         return amount.toLocaleString();
@@ -21,6 +24,9 @@
             day: "numeric",
             year: "numeric"
         });
+    }
+    const handleModalOpen = () => {
+      isOpen = true
     }
 </script>
 
@@ -40,8 +46,12 @@
         </div>
     </div>
 
-    <div class="flex flex-col items-end">
-        <span class="text-sm font-bold font-mono text-ice">KSh {formatAmount(expense.amount)}</span>
-        <span class="text-xs text-slate-blue">{formatDate(expense.date)}</span>
-    </div>
+   <div class="flex gap-x-5">
+       <div class="flex flex-col items-end">
+           <span class="text-sm font-bold font-mono text-ice">KSh {formatAmount(expense.amount)}</span>
+           <span class="text-xs text-slate-blue">{formatDate(expense.date)}</span>
+       </div>
+       <button class="cursor-pointer text-slate-blue" onclick={handleModalOpen}><Ellipsis size={16}/></button>
+   </div>
+   <ViewExpenseModal bind:isOpen={isOpen} title={expense.title} category={expense.category} payment={expense.payment} amount={expense.amount} date={expense.date} />
 </div>
